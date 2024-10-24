@@ -23,7 +23,8 @@ function renderOptions() {
     const fragment = document.createDocumentFragment();
     for (let breed of data) {
       const option = document.createElement("option");
-      option.textContent = breed;
+      // Capitalize the first letter of the breed name
+      option.textContent = breed.charAt(0).toUpperCase() + breed.slice(1);
       fragment.appendChild(option);
     }
     selectEl.appendChild(fragment);
