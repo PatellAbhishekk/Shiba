@@ -4,18 +4,29 @@
 breeds/list/all - List of all breeds
 breed/Affenpinscher/images/random  - single image
 */
+
 const selectEl = document.querySelector("select");
 const BASE_URL = `https://dog.ceo/api/`;
-// fetch gives promise(.then) otherwise not receive data(.catch)
+
+// Fetch gives promise (.then), otherwise not receive data (.catch)
 function getDogBreed() {
   return fetch(`${BASE_URL}breeds/list/all`)
     .then((data) => data.json())
     .then((data) => {
-      // loop by keys,value,enteris
-      console.log(Object.keys(data.message));
+      // Loop by keys, value, entries
+      console.log(Object.keys(data.message)); // Log all breeds
       return Object.keys(data.message);
     })
     .catch((error) => console.log(error));
+}
+
+// Function to capitalize breed name
+const capitalizeArray = (string) =>
+  string.charAt(0).toUpperCase() + string.slice(1);
+
+// optional breed consolelog
+function selectBreed() {
+  console.log("Hello");
 }
 
 function renderOptions() {
@@ -23,11 +34,16 @@ function renderOptions() {
     const fragment = document.createDocumentFragment();
     for (let breed of data) {
       const option = document.createElement("option");
-      // Capitalize the first letter of the breed name
-      option.textContent = breed.charAt(0).toUpperCase() + breed.slice(1);
+      // Capitalize breed name
+      option.textContent = capitalizeArray(breed);
+      option.value = breed; // Set value to the original breed name
       fragment.appendChild(option);
     }
     selectEl.appendChild(fragment);
+
+    // change - when selects a different option from the dropdown
+    selectEl.addEventListener("change", selectBreed);
   });
 }
+
 renderOptions();
