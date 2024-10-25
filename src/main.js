@@ -21,8 +21,8 @@ function getDogBreed() {
 }
 
 // Function to capitalize breed name
-const capitalizeArray = (string) =>
-  string.charAt(0).toUpperCase() + string.slice(1);
+const capitalizeArray = (array) =>
+  array.charAt(0).toUpperCase() + array.slice(1);
 
 // optional breed consolelog
 function selectBreed() {
