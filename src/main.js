@@ -1,49 +1,62 @@
 // API
-
 /*
 breeds/list/all - List of all breeds
 breed/Affenpinscher/images/random  - single image
+breed/Affenpinscher/images  - single images
 */
 
+import { capitalize } from "./utils";
+
+// DOM Selection
 const selectEl = document.querySelector("select");
+const carouselContainer = document.querySelector(".carousel-inner");
+
+// API
 const BASE_URL = `https://dog.ceo/api/`;
 
-// Fetch gives promise (.then), otherwise not receive data (.catch)
+// === MARK: Fetch
+// Gets the list of all breeds
 function getDogBreed() {
   return fetch(`${BASE_URL}breeds/list/all`)
-    .then((data) => data.json())
+    .then((res) => res.json())
     .then((data) => {
-      // Loop by keys, value, entries
-      console.log(Object.keys(data.message)); // Log all breeds
       return Object.keys(data.message);
     })
     .catch((error) => console.log(error));
 }
 
-// Function to capitalize breed name
-const capitalizeArray = (array) =>
-  array.charAt(0).toUpperCase() + array.slice(1);
-
-// optional breed consolelog
-function selectBreed() {
-  console.log("Hello");
+// Gets [imagesx10] on breed
+function getBreedImages(breed) {
+  return fetch(`${BASE_URL}breed/${breed}/images`)
+    .then((res) => res.json())
+    .then((data) => data.message.slice(0, 10))
+    .catch((err) => console.log(err));
 }
 
+// === MARK: Render
+// Renders options inside select
 function renderOptions() {
   getDogBreed().then((data) => {
     const fragment = document.createDocumentFragment();
+
     for (let breed of data) {
       const option = document.createElement("option");
-      // Capitalize breed name
-      option.textContent = capitalizeArray(breed);
-      option.value = breed; // Set value to the original breed name
+      option.textContent = capitalize(breed);
+      option.value = breed;
       fragment.appendChild(option);
     }
-    selectEl.appendChild(fragment);
 
-    // change - when selects a different option from the dropdown
-    selectEl.addEventListener("change", selectBreed);
+    selectEl.appendChild(fragment);
   });
 }
+
+function renderCarousel(breed) {
+  getBreedImages(breed).then((data) => console.log(data));
+}
+
+// Change on user select
+selectEl.addEventListener("change", (event) => {
+  renderCarousel(event.target.value);
+});
 
 renderOptions();
