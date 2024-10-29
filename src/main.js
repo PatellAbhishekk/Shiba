@@ -5,6 +5,7 @@ breed/Affenpinscher/images/random  - single image
 breed/Affenpinscher/images  - single images
 */
 
+import Carousel from "./component/Carousel";
 import { capitalize } from "./utils";
 
 // DOM Selection
@@ -51,7 +52,14 @@ function renderOptions() {
 }
 
 function renderCarousel(breed) {
-  getBreedImages(breed).then((data) => console.log(data));
+  carouselContainer.innerHTML = "";
+  // target with array loader
+  carouselContainer.appendChild(Carousel(["loader.gif"]));
+  getBreedImages(breed).then((data) => {
+    carouselContainer.innerHTML = "";
+    const carousel = Carousel(data);
+    carouselContainer.appendChild(carousel);
+  });
 }
 
 // Change on user select
@@ -60,3 +68,4 @@ selectEl.addEventListener("change", (event) => {
 });
 
 renderOptions();
+renderCarousel("affenpinscher");
