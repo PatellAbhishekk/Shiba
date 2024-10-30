@@ -54,10 +54,10 @@ function renderOptions() {
 function renderCarousel(breed) {
   carouselContainer.innerHTML = "";
   // target with array loader
-  carouselContainer.appendChild(Carousel(["loader.gif"]));
+  carouselContainer.appendChild(Carousel(["loader.gif"]), "loading..");
   getBreedImages(breed).then((data) => {
     carouselContainer.innerHTML = "";
-    const carousel = Carousel(data);
+    const carousel = Carousel(data, breed);
     carouselContainer.appendChild(carousel);
   });
 }

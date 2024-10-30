@@ -1,4 +1,4 @@
-export default function (imageLinks) {
+export default function (imageLinks, alt) {
   const fragment = document.createDocumentFragment();
   imageLinks.forEach((imgsrc, index) => {
     const div = document.createElement("div");
@@ -6,7 +6,7 @@ export default function (imageLinks) {
       div.classList.add("active");
     }
     div.classList.add("carousel-item");
-    div.innerHTML = `<img src="${imgsrc}" class="d-block w-100" alt="..." />`;
+    div.innerHTML = `<img src="${imgsrc}" class="d-block w-100 rounded" alt="${alt}" />`;
     fragment.appendChild(div);
   });
   return fragment;
