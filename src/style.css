@@ -9,5 +9,7 @@
 @media screen and (min-width: 768px) {
   .carousel-item {
     width: 50%;
+    justify-content: center;
+    text-align: center;
   }
 }
