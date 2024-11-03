@@ -7,7 +7,7 @@ export default function (imageLinks, alt = "Dog") {
       div.classList.add("active");
     }
     div.classList.add("carousel-item");
-    div.innerHTML = `<img src="${imgsrc}" class="d-block w-100 rounded" alt="${alt}" />`;
+    div.innerHTML = `<img src="${imgsrc}" class="d-block w-100 " alt="${alt}" />`;
     fragment.appendChild(div);
   });
   return fragment;

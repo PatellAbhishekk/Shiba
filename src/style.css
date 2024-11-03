@@ -74,3 +74,6 @@ body {
   align-items: center;
   text-align: center;
 }
+.carousel-inner {
+  border-radius: 30px;
+}
