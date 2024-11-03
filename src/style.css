@@ -14,11 +14,15 @@
     text-align: center;
   }
 }
-.floatingInput {
+h1 {
+  background: #ff7a59;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid;
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: black;
+  text-align: center;
 }
 body {
   background: linear-gradient(239deg, #ff0d00, #0e4bdb);
@@ -64,4 +68,9 @@ body {
 }
 .form-select {
   background-color: rgba(63, 181, 173, 0.199);
+}
+.form-floating {
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
