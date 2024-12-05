@@ -1,3 +1,9 @@
+# Shiba
+
+![mockup](mockup.png)
+
+## What is in the project?
+
 `Fragment` a handy feature to use when working with multiple node insertions at a time in the DOM
 `Asynchronous` -refers to processes that occur independently and do not require simultaneous execution or immediate response.
 
@@ -20,3 +26,16 @@
 `promises` - future value
 
 `promise.then().catch()`
+
+# API
+
+- get dogs
+- get dogs by breed
+- get dogs by age
+- get dogs by breed and age
+- get dogs by breed and age and color
+
+# Error handling
+
+- catching errors
+- handling errors
