@@ -39,3 +39,7 @@
 
 - catching errors
 - handling errors
+
+# License
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://raw.githubusercontent.com/PatellAbhishekk/Shiba/refs/heads/main/LICENSE)
